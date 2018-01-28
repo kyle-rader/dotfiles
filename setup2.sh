@@ -18,3 +18,9 @@ nvm install lts/carbon
 nvm alias default lts/carbon
 nvm use default
 npm install -g yarn
+
+
+header "Install Ruby Versions"
+rbenv install 2.3.3
+rebenv install 2.4.1
+rbenv install 2.5.0
