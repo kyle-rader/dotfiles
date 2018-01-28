@@ -118,6 +118,9 @@ git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-b
 cd -
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
 
+header "Install Meteor"
+curl https://install.meteor.com/ | sh
+
 header "Copy dotfiles"
 cp .zshrc ~/.zshrc
 cp .custom-zsh ~/.custom-zsh
