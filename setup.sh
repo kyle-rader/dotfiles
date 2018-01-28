@@ -63,7 +63,14 @@ header "Install Spotify"
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886 0DF731E45CE24F27EEEB1450EFDC8610341D9410
 # 2. Add the Spotify repository
 echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-# 3. Update list of available packages
+# 3. Update# Exist if any command returns with non-zero exit status fail.
+set -e
+
+function header() {
+  printf "\n======================================================================\n"
+  printf "$1"
+  printf "\n======================================================================\n"
+} list of available packages
 sudo apt-get update
 # 4. Install Spotify
 sudo apt-get install -y spotify-client
@@ -110,3 +117,10 @@ mkdir -p "$(rbenv root)"/plugins
 git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
 cd -
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
+
+header "Copy dotfiles"
+cp .zshrc ~/.zshrc
+cp .custom-zsh ~/.custom-zsh
+cp .gitconfig ~/.gitconfig
+
+header "Log out and Log back in - then run setup2.sh"
