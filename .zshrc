@@ -73,11 +73,12 @@ autoload -Uz compinit && compinit -i
 
 # Fix Tilix Issues:
 if [ ! -f /etc/profile.d/vte.sh ]; then
-  ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
+  printf "We need to make a link to /etc/profile.d/vte-2.91.sh for Tilix ...\n"
+  sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 fi
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
+  source /etc/profile.d/vte.sh
 fi
 
 # My Stuff
-source ~/.custom-zsh.sh
+source ~/.custom-zshrc.sh
