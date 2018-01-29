@@ -121,6 +121,12 @@ curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor 
 header "Install Meteor"
 curl https://install.meteor.com/ | sh
 
+header "Install Tilix"
+curl https://github.com/gnunn1/tilix/releases/download/1.7.5/tilix.zip
+sudo unzip tilix.zip -d /
+sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
+sudo update-alternatives --config x-terminal-emulator
+
 header "Copy dotfiles"
 cp .zshrc ~/.zshrc
 cp .custom-zsh ~/.custom-zsh
