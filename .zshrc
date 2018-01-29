@@ -71,5 +71,13 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
 
+# Fix Tilix Issues:
+if [ ! -f /etc/profile.d/vte.sh ]; then
+  ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
+fi
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
+
 # My Stuff
 source ~/.custom-zsh.sh
