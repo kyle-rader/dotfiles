@@ -18,6 +18,4 @@ function header() {
 
 
 header "Install Ruby Versions"
-rbenv install 2.3.3
-rbenv install 2.4.1
 rbenv install 2.5.0

@@ -19,8 +19,9 @@ function isCommand() {
 
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
   header "Install Oh-My-ZSH"
-  sudo chsh -s $(which zsh)
-  wget -qO- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | bash
+  sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+else
+  echo "Skipping Oh-My-ZSH"
 fi
 
 if ! isCommand "google-chrome" ; then
@@ -29,40 +30,26 @@ if ! isCommand "google-chrome" ; then
   wget "https://dl.google.com/linux/direct/$CHROME"
   sudo apt install -y ./$CHROME
   rm $CHROME
-fi
-
-if ! isCommand "slack" ; then
-  header "Install Slack"
-  SLACK="slack-desktop-3.0.5-amd64.deb"
-  wget https://downloads.slack-edge.com/linux_releases/$SLACK
-  sudo apt install -y ./$SLACK
-  rm $SLACK
+else
+  echo "Skipping Google Chrome"
 fi
 
 if ! isCommand "spotify" ; then
-  header "Install Spotify"
-  #(Following: https://www.spotify.com/us/download/linux/)
-  # 1. Add the Spotify repository signing keys to be able to verify downloaded packages
-  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886 0DF731E45CE24F27EEEB1450EFDC8610341D9410
-  # 2. Add the Spotify repository
-  echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-  # 3. Update# Exist if any command returns with non-zero exit status fail.
-  sudo apt-get update
-  # 4. Install Spotify
-  sudo apt-get install -y spotify-client
+  curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add - 
+  echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+  sudo apt-get update && sudo apt-get install spotify-client
+else
+  echo "Skipping Spotify"
 fi
 
 if ! isCommand "code" ; then
-  header "Install Visual Studio Code"
-  CODE="code_1.19.3-1516876437_amd64.deb"
-  wget https://az764295.vo.msecnd.net/stable/7c4205b5c6e52a53b81c69d2b2dc8a627abaa0ba/$CODE
-  sudo apt install ./$CODE
-  rm $CODE
-fi
-
-if ! isCommand "nvm" ; then
-  header "Install nvm"
-  wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
+  curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+  sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
+  sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+  sudo apt-get update
+  sudo apt-get install code
+else
+  echo "Skipping VS Code"
 fi
 
 if [ ! -d "$HOME/.rbenv" ]; then
@@ -76,19 +63,8 @@ if [ ! -d "$HOME/.rbenv" ]; then
   mkdir -p "$(rbenv root)"/plugins
   git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
   curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
-fi
-
-if ! isCommand "meteor" ; then
-  header "Install Meteor"
-  curl https://install.meteor.com/ | sh
-fi
-
-if ! isCommand "tilix" ; then
-  header "Install Tilix"
-  wget https://github.com/gnunn1/tilix/releases/download/1.7.5/tilix.zip
-  sudo unzip tilix.zip -d /
-  sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
-  sudo update-alternatives --config x-terminal-emulator
+else
+  echo "Skipping Ruby Env (rbenv)"
 fi
 
 if ! isCommand "docker" ; then
@@ -103,11 +79,12 @@ if ! isCommand "docker" ; then
   sudo usermod -aG docker ${USER}
 
   # Docker COmpose
-  sudo curl -L "https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m`" \
+  sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-`uname -s`-`uname -m`" \
     -o /usr/local/bin/docker-compose
   sudo chmod +x /usr/local/bin/docker-compose
   docker-compose --version
-
+else
+  echo "Skipping docker"
 fi
 
 header "Copy dotfiles"

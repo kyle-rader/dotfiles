@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/raderk/.oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -65,20 +65,11 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 export LANG=en_US.UTF-8
-export SSH_KEY_PATH="~/.ssh/rsa_id"
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # ZSH Completions
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
-
-# Fix Tilix Issues:
-if [ ! -f /etc/profile.d/vte.sh ]; then
-  printf "We need to make a link to /etc/profile.d/vte-2.91.sh for Tilix ...\n"
-  sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
-fi
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-  source /etc/profile.d/vte.sh
-fi
 
 # My Stuff
 source ~/.custom-zshrc.sh

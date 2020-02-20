@@ -9,14 +9,6 @@ function header() {
   printf "\n======================================================================\n"
 }
 
-# isCommand(command):
-#   returns 0 if command is not in path, 1 otherwise.
-#   Does not recongnize bash aliases
-function isCommand() {
-  echo "Checking for \"$1\"..."
-  hash "$1" 2>/dev/null || command -v "$1"
-}
-
 header "Update and Upgrade the system"
 sudo apt update
 sudo apt upgrade -y
@@ -31,14 +23,7 @@ sudo apt install -y \
   bison \
   libyaml-dev \
   libreadline6-dev \
-  zlib1g-dev \
-  libncurses5-dev \
-  libgdbm3 \
-  libgdbm-dev \
-  libssl-dev \
-  libffi-dev \
   git \
-  git-extras \
   curl \
   htop \
   unzip \
@@ -47,14 +32,13 @@ sudo apt install -y \
   python-dev \
   openssl \
   dnsmasq \
-  openjdk-8-jdk \
-  openjdk-8-jre \
-  python3-pip python3-venv python3-venv \
   fonts-powerline
 
 if [ "$SHELL" == "/bin/bash" ]; then
   header "Change Shell"
   chsh -s "$(which zsh)"
 fi
+
+cp .gitconfig ~/.gitconfig
 
 exec zsh setup2.sh

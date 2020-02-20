@@ -51,8 +51,8 @@ alias be='bundle exec'
 alias beg='spring stop && bundle exec guard'
 
 # SSH To Places
-alias wwu_cluster='ssh -p 922 cluster.cs.wwu.edu'
-alias wwu_cs='ssh -p 922 linux.cs.wwu.edu'
+# alias wwu_cluster='ssh -p 922 cluster.cs.wwu.edu'
+# alias wwu_cs='ssh -p 922 linux.cs.wwu.edu'
 
 
 ###############################################################################
@@ -60,12 +60,12 @@ alias wwu_cs='ssh -p 922 linux.cs.wwu.edu'
 ###############################################################################
 
 # our custom scripts
-export PATH="$HOME/.bin:$PATH"
+# export PATH="$HOME/.bin:$PATH"
 
 # NVM - NodeJS
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # RBENV - Ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
