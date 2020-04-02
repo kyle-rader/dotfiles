@@ -14,7 +14,7 @@
     co = checkout
     cs = commit -S
     ci = commit
-    st = !"clear && git status -sb"
+    st = !"clear && git status"
     br = branch
     # alias suggestions from https://github.com/tiimgreen/github-cheat-sheet#git-configurations
     tags = tag -l
