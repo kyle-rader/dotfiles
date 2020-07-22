@@ -1,6 +1,7 @@
 [user]
-  name = Kyle Rader
-  email = kylewrader@gmail.com
+    name = Kyle Rader
+    email = kylewrader@gmail.com
+    signingkey = FB5C898DD18B6E1B
 
 [alias]
     # pretty branch graphing http://stackoverflow.com/a/9074343
@@ -8,18 +9,23 @@
     lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
     lg = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) %C(bold yellow)%d%C(reset) %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
     l = !"git lg"
+
     # alias suggestions from http://gitimmersion.com/
     type = cat-file -t
     dump = cat-file -p
+
     co = checkout
     cs = commit -S
     ci = commit
-    st = !"clear && git status"
+
+    st = status
     br = branch
+
     # alias suggestions from https://github.com/tiimgreen/github-cheat-sheet#git-configurations
     tags = tag -l
     branches = branch -a
     remotes = remote -v
+    
     # alias suggestions from Geoff Shannon (RadicalZephyr)
     last = log -n1
     diffb4 = diff HEAD~ HEAD
@@ -27,14 +33,11 @@
     pack = !git archive -o $(basename $(pwd))-$(git tag | sort -rV | head -n1).zip HEAD
     # other aliases
     nuke = reset --hard HEAD
-    wc = whatchanged -p --oneline
-    # ASCII art from http://ascii.co.uk/art/jellyfish
 
 [core]
     editor = code --wait
     autocrlf = input
     safecrlf = true
-    # excludesfile = ~/.nunathat
 
 [color]
     ui = auto
