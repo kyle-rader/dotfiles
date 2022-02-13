@@ -30,7 +30,7 @@ function Download-Winget {
 }
 
 Write-Host "Starting Setup..."
-Download-Winget()
+Download-Winget
 
 # iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 Write-Host "Setup Done."
