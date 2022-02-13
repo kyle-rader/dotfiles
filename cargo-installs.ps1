@@ -3,7 +3,7 @@ Write-Host "Starting cargo installs"
 Write-Host "Adding Rust Clippy"
 rustup component add clippy
 
-@webInstallApps = (
+$webInstallApps = (
     bat
     comrak
     ripgrep
@@ -13,12 +13,12 @@ rustup component add clippy
     pandoc
 )
 
-foreach ($app in @webInstallApps) {
+foreach ($app in $webInstallApps) {
     Write-Host "Installing $app"
     iex (curl.exe -A "MS" "https://webinstall.dev/$app")
 }
 
-@cargoInstallApps = (
+$cargoInstallApps = (
     cargo-edit
     fd-find
     git-delta
@@ -29,16 +29,16 @@ foreach ($app in @webInstallApps) {
     xh
 )
 
-foreach ($app in @cargoInstallApps) {
+foreach ($app in $cargoInstallApps) {
     Write-Host "Installing $app"
     cargo install "$app" --locked
 }
 
-@cargoNightlyInstallApps = (
+$cargoNightlyInstallApps = (
     dua-cli
 )
 
-foreach ($app in @cargoNightlyInstallApps) {
+foreach ($app in $cargoNightlyInstallApps) {
     Write-Host "Installing $app"
     cargo +nightly install "$app" --locked
 }
