@@ -4,13 +4,13 @@ Write-Host "Adding Rust Clippy"
 rustup component add clippy
 
 $webInstallApps = @(
-    bat
-    comrak
-    ripgrep
-    fd
-    jq
-    yq
-    pandoc
+    'bat'
+    'comrak'
+    'ripgrep'
+    'fd'
+    'jq'
+    'yq'
+    'pandoc'
 )
 
 foreach ($app in $webInstallApps) {
@@ -19,14 +19,14 @@ foreach ($app in $webInstallApps) {
 }
 
 $cargoInstallApps = @(
-    cargo-edit
-    fd-find
-    git-delta
-    hexly
-    hyperfine
-    pastel
-    sd
-    xh
+    'cargo-edit'
+    'fd-find'
+    'git-delta'
+    'hexly'
+    'hyperfine'
+    'pastel'
+    'sd'
+    'xh'
 )
 
 foreach ($app in $cargoInstallApps) {
@@ -35,7 +35,7 @@ foreach ($app in $cargoInstallApps) {
 }
 
 $cargoNightlyInstallApps = @(
-    dua-cli
+    'dua-cli'
 )
 
 foreach ($app in $cargoNightlyInstallApps) {
