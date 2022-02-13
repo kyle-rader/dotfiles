@@ -10,14 +10,14 @@ function Download-Winget {
     Write-Host "Latest tag: $tag"
     $download = "https://github.com/$repo/releases/download/$tag/$file"
 
-    $zip = "$name-$tag.zip"
-    $dir = "$name-$tag"
+    $dir = "winget"
+    $zip = "$zip.zip"
 
-    Write-Host Dowloading latest release to $zip 
+    Write-Host Dowloading latest release to $zip
     Invoke-WebRequest $download -Out $zip
 
     # Write-Host Extracting release files
-    # Expand-Archive $zip -Force
+    Expand-Archive $zip -Force -DestinationPath $dir
 
     # # Cleaning up target dir
     # Remove-Item $name -Recurse -Force -ErrorAction SilentlyContinue 
