@@ -1,5 +1,7 @@
 Write-Host "Starting Setup..."
 
+Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH*'
+
 $wingetApps = @(
     'Microsoft.Git'
     'Microsoft.VisualStudioCode'
