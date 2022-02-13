@@ -7,26 +7,27 @@ function Download-Winget {
     Write-Host Determining latest release
     $tag = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].tag_name
 
+    Write-Host "Latest tag: $tag"
     $download = "https://github.com/$repo/releases/download/$tag/$file"
-    $name = $file.Split(".")[0]
+
     $zip = "$name-$tag.zip"
     $dir = "$name-$tag"
 
-    Write-Host Dowloading latest release
+    Write-Host Dowloading latest release to $zip 
     Invoke-WebRequest $download -Out $zip
 
-    Write-Host Extracting release files
-    Expand-Archive $zip -Force
+    # Write-Host Extracting release files
+    # Expand-Archive $zip -Force
 
-    # Cleaning up target dir
-    Remove-Item $name -Recurse -Force -ErrorAction SilentlyContinue 
+    # # Cleaning up target dir
+    # Remove-Item $name -Recurse -Force -ErrorAction SilentlyContinue 
 
-    # Moving from temp dir to target dir
-    Move-Item $dir\$name -Destination $name -Force
+    # # Moving from temp dir to target dir
+    # Move-Item $dir\$name -Destination $name -Force
 
-    # Removing temp files
-    Remove-Item $zip -Force
-    Remove-Item $dir -Recurse -Force
+    # # Removing temp files
+    # Remove-Item $zip -Force
+    # Remove-Item $dir -Recurse -Force
 }
 
 Write-Host "Starting Setup..."
