@@ -22,7 +22,7 @@ $cargoInstallApps = @(
     'cargo-edit'
     'fd-find'
     'git-delta'
-    'hexly'
+    'hexyl'
     'hyperfine'
     'pastel'
     'sd'
