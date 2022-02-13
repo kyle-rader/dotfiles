@@ -8,7 +8,7 @@ $wingetApps = @(
     'Microsoft.WindowsTerminal',
 )
 
-forEach $app in $wingetApps {
+forEach ($app in $wingetApps) {
     Write-Host "Installing $app"
     winget install "$app"
 }
