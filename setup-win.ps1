@@ -1,11 +1,11 @@
 Write-Host "Starting Setup..."
 
 $wingetApps = @(
-    'Microsoft.Git',
-    'Microsoft.VisualStudioCode',
-    'Microsoft.VisualStudio.2022.Community',
-    'Microsoft.PowerShell',
-    'Microsoft.WindowsTerminal',
+    'Microsoft.Git'
+    'Microsoft.VisualStudioCode'
+    'Microsoft.VisualStudio.2022.Community'
+    'Microsoft.PowerShell'
+    'Microsoft.WindowsTerminal'
 )
 
 forEach ($app in $wingetApps) {
