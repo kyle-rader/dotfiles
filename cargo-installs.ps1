@@ -4,9 +4,7 @@ Write-Host "Adding Rust Clippy"
 rustup component add clippy
 
 $webInstallApps = @(
-    'bat'
     'comrak'
-    'ripgrep'
     'fd'
     'jq'
     'yq'
@@ -19,6 +17,7 @@ foreach ($app in $webInstallApps) {
 }
 
 $cargoInstallApps = @(
+    'ripgrep'
     'cargo-edit'
     'fd-find'
     'git-delta'
