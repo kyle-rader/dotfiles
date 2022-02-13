@@ -1,37 +1,17 @@
-function Download-Winget {
-    $repo = "microsoft/winget-cli"
-    $file = "Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
-
-    $releases = "https://api.github.com/repos/$repo/releases"
-
-    Write-Host Determining latest release
-    $tag = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].tag_name
-
-    Write-Host "Latest tag: $tag"
-    $download = "https://github.com/$repo/releases/download/$tag/$file"
-
-    $dir = "winget"
-    $zip = "$zip.zip"
-
-    Write-Host Dowloading latest release to $zip
-    Invoke-WebRequest $download -Out $zip
-
-    # Write-Host Extracting release files
-    Expand-Archive $zip -Force -DestinationPath $dir
-
-    # # Cleaning up target dir
-    # Remove-Item $name -Recurse -Force -ErrorAction SilentlyContinue 
-
-    # # Moving from temp dir to target dir
-    # Move-Item $dir\$name -Destination $name -Force
-
-    # # Removing temp files
-    # Remove-Item $zip -Force
-    # Remove-Item $dir -Recurse -Force
-}
-
 Write-Host "Starting Setup..."
-Download-Winget
+
+$wingetApps = @(
+    'Microsoft.Git',
+    'Microsoft.VisualStudioCode',
+    'Microsoft.VisualStudio.2022.Community',
+    'Microsoft.PowerShell',
+    'Microsoft.WindowsTerminal',
+)
+
+forEach $app in $wingetApps {
+    Write-Host "Installing $app"
+    winget install "$app"
+}
 
 # iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 Write-Host "Setup Done."
