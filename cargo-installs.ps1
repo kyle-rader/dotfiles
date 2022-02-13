@@ -15,7 +15,7 @@ $webInstallApps = @(
 
 foreach ($app in $webInstallApps) {
     Write-Host "Installing $app"
-    iex (curl.exe -A "MS" "https://webinstall.dev/$app")
+    curl.exe -A "MS" "https://webinstall.dev/$app" | powershell
 }
 
 $cargoInstallApps = @(
