@@ -3,6 +3,12 @@
 ## Windows
 In 2022, we can now have a good dev experience on Windows!
 
+Basic Setup
 ```powershell
-iex (iwr 'https://raw.githubusercontent.com/kyle-rader/dotfiles/master/setup.ps1' -Headers @{"Cache-Control"="no-cache"})
+. {iwr -useb "https://raw.githubusercontent.com/kyle-rader/dotfiles/master/setup.ps1" } | iex
+```
+
+Cargo Setup
+```powershell
+. {iwr -useb "https://raw.githubusercontent.com/kyle-rader/dotfiles/master/cargo-installs.ps1" } | iex
 ```
