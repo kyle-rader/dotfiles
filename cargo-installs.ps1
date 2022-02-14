@@ -17,6 +17,7 @@ foreach ($app in $webInstallApps) {
 }
 
 $cargoInstallApps = @(
+    'bat'
     'ripgrep'
     'cargo-edit'
     'fd-find'
