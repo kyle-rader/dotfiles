@@ -2,6 +2,10 @@
     name = Kyle Rader
     email = kylewrader@gmail.com
     signingkey = FB5C898DD18B6E1B
+[gpg]
+	program = gpg2
+[commit]
+	gpgsign = true
 
 [alias]
     # pretty branch graphing http://stackoverflow.com/a/9074343
@@ -16,7 +20,7 @@
 
     co = checkout
     cs = commit -S
-    ci = commit
+    ci = commit -S
 
     st = status
     br = branch
@@ -36,7 +40,7 @@
 
 [core]
     editor = code --wait
-    autocrlf = input
+    autocrlf = false
     safecrlf = true
 
 [color]
@@ -53,6 +57,3 @@
 
 [remote "origin"]
 	prune = true
-
-[gpg]
-	program = gpg2

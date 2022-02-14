@@ -1,5 +1,12 @@
 Write-Host "Starting Setup..."
 
+Write-Host "Installing scoop installer"
+Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+Invoke-WebRequest -useb get.scoop.sh | Invoke-Expression
+
+# TODO: Install NerdFont (Inconsolata Nerd Font)
+# TODO: scoop install starship (starship.rs)
+
 Write-Host "Installing OpenSSH Features..."
 Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH*'
 # Install the OpenSSH Client
@@ -14,6 +21,7 @@ $wingetApps = @(
     'Microsoft.VisualStudio.2022.Community'
     'Microsoft.PowerShell'
     'Microsoft.WindowsTerminal'
+    'GnuPG.Gpg4win'
 )
 
 forEach ($app in $wingetApps) {
