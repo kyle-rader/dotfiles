@@ -17,6 +17,7 @@ foreach ($app in $webInstallApps) {
 }
 
 $cargoInstallApps = @(
+    'loki-cli'
     'bat'
     'ripgrep'
     'cargo-edit'
