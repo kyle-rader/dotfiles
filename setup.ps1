@@ -7,14 +7,6 @@ Invoke-WebRequest -useb get.scoop.sh | Invoke-Expression
 # TODO: Install NerdFont (Inconsolata Nerd Font)
 # TODO: scoop install starship (starship.rs)
 
-Write-Host "Installing OpenSSH Features..."
-Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH*'
-# Install the OpenSSH Client
-Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
-
-# Install the OpenSSH Server
-Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
-
 $wingetApps = @(
     'Microsoft.Git'
     'Microsoft.VisualStudioCode'
