@@ -57,3 +57,5 @@ done
 # Copy dotfiles
 header "Copying dotfiles"
 curl -L -o ~/.gitconfig https://raw.githubusercontent.com/kyle-rader/dotfiles/main/.gitconfig
+
+header "🎉 all done 🎉"
