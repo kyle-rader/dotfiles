@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
 function header() {
-  printf "\n==== ⚒️ ====\n"
-  printf "$1"
+  echo
+  echo "==== ⚒️ ===="
+  echo "$1"
 }
 
 function footer_good() {
-  printf "==== ✅ ====\n"
+    echo
+    echo "==== ✅ ===="
 }
 
 set -e
