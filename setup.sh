@@ -41,3 +41,7 @@ for app in "${apps[@]}"; do
 done
 
 cargo +nightly install dua-cli --locked
+
+# Copy dotfiles
+echo Copying dotfiles...
+curl -L -o ~/.gitconfig https://raw.githubusercontent.com/kyle-rader/dotfiles/main/.gitconfig
