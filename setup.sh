@@ -47,11 +47,11 @@ rustup toolchain install nightly > /dev/null
 
 # Cargo installs
 header "Installing dev tools from cargo"
-cargo install cargo-binstall > /dev/null
+cargo install -q cargo-binstall > /dev/null
 apps=(loki-cli nu bat ripgrep fd-find git-delta xh hyperfine hexyl pastel rtx-cli nu)
 for app in "${apps[@]}"; do
     echo intalling $app
-    cargo binstall $app --locked > /dev/null
+    cargo binstall -q $app --locked > /dev/null
     echo ✅
 done
 
