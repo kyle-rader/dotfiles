@@ -51,8 +51,12 @@ cargo install -q cargo-binstall > /dev/null
 apps=(loki-cli nu bat ripgrep fd-find git-delta xh hyperfine hexyl pastel rtx-cli nu)
 for app in "${apps[@]}"; do
     echo intalling $app
-    cargo binstall -q $app --locked > /dev/null
-    echo ✅
+    cargo binstall -q $app --locked
+    if [ "$?" == "0" ]; then
+        echo ✅
+    else
+        echo ❌
+    fi
 done
 
 # RTX Installs
