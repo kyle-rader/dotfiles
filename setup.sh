@@ -12,8 +12,8 @@ header "Starting setup..."
 
 # Update and Upgrade
 header "Updating and Upgrading..."
-sudo apt-get update
-sudo apt-get upgrade -y
+sudo apt-get update > /dev/null
+sudo apt-get upgrade -y > /dev/null
 
 # Install essentials
 header "Installing essentials..."
@@ -29,13 +29,13 @@ sudo apt-get install -y \
     ca-certificates \
     software-properties-common \
     curl \
-    zsh \
+    zsh > /dev/null
 
 # Install latest git
 header "Installing git..."
 sudo add-apt-repository ppa:git-core/ppa
-sudo apt update
-sudo apt install git
+sudo apt update > /dev/null
+sudo apt install git > /dev/null
 
 # Install Rust
 header "Installing Rust..."
