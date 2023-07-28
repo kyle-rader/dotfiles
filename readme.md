@@ -1,8 +1,6 @@
 # Kyle's dotfiles and setup scripts
 
 ## Windows
-In 2022, we can now have a good dev experience on Windows!
-
 First, do this as an Admin
 ```powershell
 Write-Host "Installing OpenSSH Features..."
@@ -26,5 +24,5 @@ Cargo Setup
 
 ## WSL
 ```bash
-wget -O - https://raw.githubusercontent.com/kyle-rader/dotfiles/main/setup.sh | bash
+wget -qO - https://raw.githubusercontent.com/kyle-rader/dotfiles/main/setup.sh | bash
 ```

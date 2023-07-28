@@ -22,9 +22,14 @@ sudo apt-get install -y \
     apt-transport-https \
     ca-certificates \
     software-properties-common \
-    git \
     curl \
     zsh \
+
+# Install latest git
+echo Installing git...
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt update
+sudo apt install git
 
 # Install Rust
 echo Installing Rust...
