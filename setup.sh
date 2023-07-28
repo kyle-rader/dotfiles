@@ -95,7 +95,16 @@ footer_good
 # Copy dotfiles
 header "Copying dotfiles"
 curl -L -o ~/.gitconfig https://raw.githubusercontent.com/kyle-rader/dotfiles/main/.gitconfig
+curl -L -o ~/.zshrc https://raw.githubusercontent.com/kyle-rader/dotfiles/main/.zshrc
 footer_good
 
-header "🎉 all done 🎉"
-footer_good
+# Change default shell to ZSH
+if [ "$SHELL" != "/bin/zsh" ]; then
+    header "Changing shell to ZSH"
+    sudo chsh -s /bin/zsh
+    header "🎉 launching zsh"
+    exec -l zsh
+else
+    header "🎉 all done 🎉"
+    footer_good
+fi
