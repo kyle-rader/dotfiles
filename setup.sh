@@ -8,15 +8,15 @@ function header() {
 
 set -e
 
-header "Starting setup..."
+header "Starting setup"
 
 # Update and Upgrade
-header "Updating and Upgrading..."
+header "Updating and Upgrading"
 sudo apt-get update > /dev/null
 sudo apt-get upgrade -y > /dev/null
 
 # Install essentials
-header "Installing essentials..."
+header "Installing essentials"
 sudo apt-get install -y \
     build-essential \
     pkg-config \
@@ -32,28 +32,30 @@ sudo apt-get install -y \
     zsh > /dev/null
 
 # Install latest git
-header "Installing git..."
-sudo add-apt-repository ppa:git-core/ppa
+header "Installing git"
+sudo add-apt-repository ppa:git-core/ppa > /dev/null
 sudo apt update > /dev/null
 sudo apt install git > /dev/null
 
 # Install Rust
-header "Installing Rust..."
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+header "Installing Rust"
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y -q
 source "$HOME/.cargo/env"
 
-header "Installing Rustup components..."
-rustup toolchain install nightly
+header "Installing Rust Nightly Toolchain"
+rustup toolchain install nightly > /dev/null
 
 # Cargo installs
-header "Installing dev tools from cargo..."
+header "Installing dev tools from cargo"
 apps=(loki-cli nu bat ripgrep fd-find git-delta xh hyperfine hexyl pastel)
 for app in "${apps[@]}"; do
-    cargo install $app --locked
+    echo -n intalling $app
+    cargo install $app --locked > /dev/null
+    echo ✅
 done
 
-cargo +nightly install dua-cli --locked
+cargo +nightly install dua-cli --locked > /dev/null
 
 # Copy dotfiles
-header "Copying dotfiles..."
+header "Copying dotfiles"
 curl -L -o ~/.gitconfig https://raw.githubusercontent.com/kyle-rader/dotfiles/main/.gitconfig
