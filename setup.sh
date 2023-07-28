@@ -32,6 +32,8 @@ sudo apt-get install -y \
     ca-certificates \
     software-properties-common \
     curl \
+    libncurses5-dev \
+    libncursesw5-dev \
     zsh > /dev/null
 
 footer_good
@@ -76,8 +78,8 @@ footer_good
 
 # RTX Installs
 header "Installing Node"
-rtx install node@20
-rtx use -g node@20
+rtx install node@latest
+rtx use -g node@latest
 footer_good
 
 header "Installing Elixir/OTP"
