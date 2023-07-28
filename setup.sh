@@ -88,13 +88,11 @@ eval "$(rtx activate bash)"
 header "Installing Node"
 rtx install node@latest
 rtx use -g node@latest
-node --version
 footer_good
 
 header "Installing Elixir/OTP"
 rtx use -g erlang@25
 rtx use -g elixir@1.14.5-otp-25
-echo "$(elixir --version)" || true
 footer_good
 
 # Copy dotfiles
