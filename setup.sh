@@ -36,6 +36,7 @@ sudo apt-get install -y \
     curl \
     libncurses5-dev \
     libncursesw5-dev \
+    gnupg2 \
     zsh > /dev/null
 
 footer_good
@@ -71,7 +72,7 @@ footer_good
 # Cargo installs
 header "Installing dev tools from cargo"
 cargo install -q cargo-binstall > /dev/null
-apps=(loki-cli nu bat ripgrep fd-find git-delta xh hyperfine hexyl pastel rtx-cli nu)
+apps=(loki-cli nu bat ripgrep fd-find git-delta xh hyperfine hexyl pastel rtx-cli nu starship)
 for app in "${apps[@]}"; do
     echo intalling $app
     cargo binstall -q $app -y

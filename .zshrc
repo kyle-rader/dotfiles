@@ -16,3 +16,6 @@ eval "$(rtx activate zsh)"
 
 # Aliases
 alias c=cargo
+alias la="ls -la"
+alias l="ls -l"
+alias gpg=gpg2
