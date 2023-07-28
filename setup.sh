@@ -53,14 +53,19 @@ fi
 footer_good
 
 # Install Rust
-header "Installing Rust"
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y -q
-# Enable cargo in the current shell
-source "$HOME/.cargo/env"
-footer_good
+if [ -z "$(command -v cargo)" ]; then
+    header "Installing Rust"
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y -q
+    # Enable cargo in the current shell
+    source "$HOME/.cargo/env"
+    footer_good
 
-header "Installing Rust Nightly Toolchain"
-rustup toolchain install nightly > /dev/null
+    header "Installing Rust Nightly Toolchain"
+    rustup toolchain install nightly > /dev/null
+else
+    header "Rust already installed"
+fi
+
 footer_good
 
 # Cargo installs
