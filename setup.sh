@@ -94,7 +94,7 @@ footer_good
 header "Installing Elixir/OTP"
 rtx use -g erlang@25
 rtx use -g elixir@1.14.5-otp-25
-elixir --version
+echo "$(elixir --version)" || true
 footer_good
 
 # Copy dotfiles
