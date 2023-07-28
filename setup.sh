@@ -47,12 +47,22 @@ rustup toolchain install nightly > /dev/null
 
 # Cargo installs
 header "Installing dev tools from cargo"
-apps=(loki-cli nu bat ripgrep fd-find git-delta xh hyperfine hexyl pastel)
+cargo install cargo-binstall > /dev/null
+apps=(loki-cli nu bat ripgrep fd-find git-delta xh hyperfine hexyl pastel rtx-cli nu)
 for app in "${apps[@]}"; do
-    echo -n intalling $app
-    cargo install $app --locked > /dev/null
+    echo intalling $app
+    cargo binstall $app --locked > /dev/null
     echo ✅
 done
+
+# RTX Installs
+header "Installing Node"
+rtx install node@20
+rtx use -g node@20
+
+header "Installing Elixir/OTP"
+rtx install elixir@1.14.5-otp-25
+rtx use -g elixir@1.14.5-otp-25
 
 # Copy dotfiles
 header "Copying dotfiles"
