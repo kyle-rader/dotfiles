@@ -1,44 +1,43 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Exist if any command returns with non-zero exit status fail.
 set -e
 
-function header() {
-  printf "\n======================================================================\n"
-  printf "$1"
-  printf "\n======================================================================\n"
-}
+echo Starting setup...
 
-header "Update and Upgrade the system"
-sudo apt update
-sudo apt upgrade -y
+# Update and Upgrade
+echo Updating and Upgrading...
+sudo apt-get update
+sudo apt-get upgrade -y
 
-header "Install dev dependencies"
-sudo apt install -y \
-  build-essential \
-  apt-transport-https \
-  ca-certificates \
-  software-properties-common \
-  autoconf \
-  bison \
-  libyaml-dev \
-  libreadline6-dev \
-  git \
-  curl \
-  htop \
-  unzip \
-  vim \
-  zsh \
-  python-dev \
-  openssl \
-  dnsmasq \
-  fonts-powerline
+# Install essentials
+echo Installing essentials...
+sudo apt-get install -y \
+    build-essential \
+    pkg-config \
+    libssl-dev \
+    libyaml-dev \
+    unzip \
+    vim \
+    openssl \
+    apt-transport-https \
+    ca-certificates \
+    software-properties-common \
+    git \
+    curl \
+    zsh \
 
-if [ "$SHELL" == "/bin/bash" ]; then
-  header "Change Shell"
-  chsh -s "$(which zsh)"
-fi
+# Install Rust
+echo Installing Rust...
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-cp .gitconfig ~/.gitconfig
+echo Installing Rustup components...
+rustup toolchain install nightly
 
-exec zsh setup2.sh
+# Cargo installs
+echo Installing dev tools from cargo...
+apps=(loki-cli nu bat ripgrep fd-find git-delta xh hyperfine hexyl pastel)
+for app in "${apps[@]}"; do
+    cargo install $app --locked
+done
+
+cargo +nightly install dua-cli --locked

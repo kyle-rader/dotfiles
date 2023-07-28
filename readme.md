@@ -23,3 +23,8 @@ Cargo Setup
 ```powershell
 . {iwr -useb "https://raw.githubusercontent.com/kyle-rader/dotfiles/master/cargo-installs.ps1" } | iex
 ```
+
+## WSL
+```bash
+wget -O - https://raw.githubusercontent.com/kyle-rader/dotfiles/main/setup.sh | bash
+```
