@@ -101,10 +101,10 @@ rtx install node@latest
 rtx use -g node@latest
 footer_good
 
-header "Installing Elixir/OTP"
-rtx use -g erlang@25
-rtx use -g elixir@1.14.5-otp-25
-footer_good
+#header "Installing Elixir/OTP"
+#rtx use -g erlang@25
+#rtx use -g elixir@1.14.5-otp-25
+#footer_good
 
 # Copy dotfiles
 header "Copying dotfiles"
